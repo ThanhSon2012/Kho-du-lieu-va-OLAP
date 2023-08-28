@@ -1,0 +1,2268 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/10/2023 5:07:07 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SHU"
+  DTS:CreatorName="SHU\20521"
+  DTS:DTSID="{D9460B0B-3A13-4E76-8185-8ADBBD84410C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5131.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{C64577AE-FB76-40D8-AECB-7FE0CF28119B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{D75CE22E-CB44-48F8-8776-B92123AB3E35}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\20521\OneDrive\Máy tính\match.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\dim_date"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{97E11501-0195-45FF-8683-F657E910AC82}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dim_date"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\dim_date\dim_date"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="dim_date"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dim_date]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dim_date\dim_date.Connections[OleDbConnection]"
+                  connectionManagerID="{7598FF2B-15AD-4884-AC4B-F2D8E6407CB3}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SHU_SHU.DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dim_date\dim_date.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dim_date\dim_date.Inputs[OLE DB Destination Input].Columns[day]"
+                      cachedDataType="r8"
+                      cachedName="day"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\dim_date\dim_date.Inputs[OLE DB Destination Input].ExternalColumns[day]"
+                      lineageId="Package\dim_date\Sort.Outputs[Sort Output].Columns[day]" />
+                    <inputColumn
+                      refId="Package\dim_date\dim_date.Inputs[OLE DB Destination Input].Columns[month]"
+                      cachedDataType="r8"
+                      cachedName="month"
+                      cachedSortKeyPosition="2"
+                      externalMetadataColumnId="Package\dim_date\dim_date.Inputs[OLE DB Destination Input].ExternalColumns[month]"
+                      lineageId="Package\dim_date\Sort.Outputs[Sort Output].Columns[month]" />
+                    <inputColumn
+                      refId="Package\dim_date\dim_date.Inputs[OLE DB Destination Input].Columns[year]"
+                      cachedDataType="r8"
+                      cachedName="year"
+                      cachedSortKeyPosition="3"
+                      externalMetadataColumnId="Package\dim_date\dim_date.Inputs[OLE DB Destination Input].ExternalColumns[year]"
+                      lineageId="Package\dim_date\Sort.Outputs[Sort Output].Columns[year]" />
+                    <inputColumn
+                      refId="Package\dim_date\dim_date.Inputs[OLE DB Destination Input].Columns[time]"
+                      cachedDataType="date"
+                      cachedName="time"
+                      cachedSortKeyPosition="4"
+                      externalMetadataColumnId="Package\dim_date\dim_date.Inputs[OLE DB Destination Input].ExternalColumns[time]"
+                      lineageId="Package\dim_date\Sort.Outputs[Sort Output].Columns[time]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dim_date\dim_date.Inputs[OLE DB Destination Input].ExternalColumns[iddate]"
+                      dataType="i4"
+                      name="iddate" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\dim_date.Inputs[OLE DB Destination Input].ExternalColumns[day]"
+                      dataType="r8"
+                      name="day" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\dim_date.Inputs[OLE DB Destination Input].ExternalColumns[month]"
+                      dataType="r8"
+                      name="month" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\dim_date.Inputs[OLE DB Destination Input].ExternalColumns[year]"
+                      dataType="r8"
+                      name="year" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\dim_date.Inputs[OLE DB Destination Input].ExternalColumns[time]"
+                      dataType="dbTimeStamp"
+                      name="time" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dim_date\dim_date.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\dim_date\dim_date.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim_date\dim_date.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dim_date\dim_date.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dim_date\dim_date.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dim_date\dim_date.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dim_date\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">match$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dim_date\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dim_date\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].Columns[day]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[day]"
+                      lineageId="Package\dim_date\Excel Source.Outputs[Excel Source Output].Columns[day]"
+                      name="day"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].Columns[month]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[month]"
+                      lineageId="Package\dim_date\Excel Source.Outputs[Excel Source Output].Columns[month]"
+                      name="month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].Columns[year]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[year]"
+                      lineageId="Package\dim_date\Excel Source.Outputs[Excel Source Output].Columns[year]"
+                      name="year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].Columns[time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[time (utc)]"
+                      lineageId="Package\dim_date\Excel Source.Outputs[Excel Source Output].Columns[time]"
+                      name="time"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[id]"
+                      dataType="r8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[home]"
+                      dataType="wstr"
+                      length="255"
+                      name="home" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[away]"
+                      dataType="wstr"
+                      length="255"
+                      name="away" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[day]"
+                      dataType="r8"
+                      name="day" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[month]"
+                      dataType="r8"
+                      name="month" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[year]"
+                      dataType="r8"
+                      name="year" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[time (utc)]"
+                      dataType="date"
+                      name="time (utc)" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[attendance]"
+                      dataType="r8"
+                      name="attendance" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[venue]"
+                      dataType="wstr"
+                      length="255"
+                      name="venue" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[league]"
+                      dataType="wstr"
+                      length="255"
+                      name="league" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_score]"
+                      dataType="r8"
+                      name="home_score" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_score]"
+                      dataType="r8"
+                      name="away_score" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_possessionPct]"
+                      dataType="r8"
+                      name="home_possessionPct" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_possessionPct]"
+                      dataType="r8"
+                      name="away_possessionPct" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_shotsSummary]"
+                      dataType="r8"
+                      name="home_shotsSummary" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_shotsSummary]"
+                      dataType="r8"
+                      name="away_shotsSummary" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_foulsCommitted]"
+                      dataType="r8"
+                      name="home_foulsCommitted" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_foulsCommitted]"
+                      dataType="r8"
+                      name="away_foulsCommitted" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_yellowCards]"
+                      dataType="r8"
+                      name="home_yellowCards" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_yellowCards]"
+                      dataType="r8"
+                      name="away_yellowCards" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_redCards]"
+                      dataType="r8"
+                      name="home_redCards" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_redCards]"
+                      dataType="r8"
+                      name="away_redCards" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_offsides]"
+                      dataType="r8"
+                      name="home_offsides" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_offsides]"
+                      dataType="r8"
+                      name="away_offsides" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_wonCorners]"
+                      dataType="r8"
+                      name="home_wonCorners" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_wonCorners]"
+                      dataType="r8"
+                      name="away_wonCorners" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_saves]"
+                      dataType="r8"
+                      name="home_saves" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_saves]"
+                      dataType="r8"
+                      name="away_saves" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_goal_minutes]"
+                      dataType="wstr"
+                      length="255"
+                      name="home_goal_minutes" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_goal_scorers]"
+                      dataType="wstr"
+                      length="255"
+                      name="home_goal_scorers" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_goal_minutes]"
+                      dataType="wstr"
+                      length="255"
+                      name="away_goal_minutes" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_goal_scorers]"
+                      dataType="wstr"
+                      length="255"
+                      name="away_goal_scorers" />
+                    <externalMetadataColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Output].ExternalColumns[League1]"
+                      dataType="wstr"
+                      length="255"
+                      name="League1" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dim_date\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dim_date\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dim_date\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Error Output].Columns[day]"
+                      dataType="r8"
+                      lineageId="Package\dim_date\Excel Source.Outputs[Excel Source Error Output].Columns[day]"
+                      name="day" />
+                    <outputColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Error Output].Columns[month]"
+                      dataType="r8"
+                      lineageId="Package\dim_date\Excel Source.Outputs[Excel Source Error Output].Columns[month]"
+                      name="month" />
+                    <outputColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Error Output].Columns[year]"
+                      dataType="r8"
+                      lineageId="Package\dim_date\Excel Source.Outputs[Excel Source Error Output].Columns[year]"
+                      name="year" />
+                    <outputColumn
+                      refId="Package\dim_date\Excel Source.Outputs[Excel Source Error Output].Columns[time (utc)]"
+                      dataType="date"
+                      lineageId="Package\dim_date\Excel Source.Outputs[Excel Source Error Output].Columns[time (utc)]"
+                      name="time (utc)" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dim_date\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\dim_date\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dim_date\Sort.Inputs[Sort Input].Columns[day]"
+                      cachedDataType="r8"
+                      cachedName="day"
+                      lineageId="Package\dim_date\Excel Source.Outputs[Excel Source Output].Columns[day]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dim_date\Sort.Inputs[Sort Input].Columns[month]"
+                      cachedDataType="r8"
+                      cachedName="month"
+                      lineageId="Package\dim_date\Excel Source.Outputs[Excel Source Output].Columns[month]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dim_date\Sort.Inputs[Sort Input].Columns[year]"
+                      cachedDataType="r8"
+                      cachedName="year"
+                      lineageId="Package\dim_date\Excel Source.Outputs[Excel Source Output].Columns[year]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dim_date\Sort.Inputs[Sort Input].Columns[time]"
+                      cachedDataType="date"
+                      cachedName="time"
+                      lineageId="Package\dim_date\Excel Source.Outputs[Excel Source Output].Columns[time]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">4</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dim_date\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim_date\Sort.Outputs[Sort Output].Columns[day]"
+                      dataType="r8"
+                      lineageId="Package\dim_date\Sort.Outputs[Sort Output].Columns[day]"
+                      name="day"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\dim_date\Excel Source.Outputs[Excel Source Output].Columns[day]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dim_date\Sort.Outputs[Sort Output].Columns[month]"
+                      dataType="r8"
+                      lineageId="Package\dim_date\Sort.Outputs[Sort Output].Columns[month]"
+                      name="month"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\dim_date\Excel Source.Outputs[Excel Source Output].Columns[month]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dim_date\Sort.Outputs[Sort Output].Columns[year]"
+                      dataType="r8"
+                      lineageId="Package\dim_date\Sort.Outputs[Sort Output].Columns[year]"
+                      name="year"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\dim_date\Excel Source.Outputs[Excel Source Output].Columns[year]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dim_date\Sort.Outputs[Sort Output].Columns[time]"
+                      dataType="date"
+                      lineageId="Package\dim_date\Sort.Outputs[Sort Output].Columns[time]"
+                      name="time"
+                      sortKeyPosition="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\dim_date\Excel Source.Outputs[Excel Source Output].Columns[time]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dim_date.Paths[Excel Source Output]"
+              endId="Package\dim_date\Sort.Inputs[Sort Input]"
+              name="Excel Source Output"
+              startId="Package\dim_date\Excel Source.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\dim_date.Paths[Sort Output]"
+              endId="Package\dim_date\dim_date.Inputs[OLE DB Destination Input]"
+              name="Sort Output"
+              startId="Package\dim_date\Sort.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\dim_goal"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{B433D030-202D-44DB-BE19-BC1C04A1B7B6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dim_goal"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\dim_goal\dim_goal"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="dim_goal"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dim_goal]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dim_goal\dim_goal.Connections[OleDbConnection]"
+                  connectionManagerID="{7598FF2B-15AD-4884-AC4B-F2D8E6407CB3}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SHU_SHU.DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dim_goal\dim_goal.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dim_goal\dim_goal.Inputs[OLE DB Destination Input].Columns[home_goal_minutes]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="home_goal_minutes"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\dim_goal\dim_goal.Inputs[OLE DB Destination Input].ExternalColumns[home_goal_minutes]"
+                      lineageId="Package\dim_goal\Sort.Outputs[Sort Output].Columns[home_goal_minutes]" />
+                    <inputColumn
+                      refId="Package\dim_goal\dim_goal.Inputs[OLE DB Destination Input].Columns[home_goal_scorers]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="home_goal_scorers"
+                      cachedSortKeyPosition="2"
+                      externalMetadataColumnId="Package\dim_goal\dim_goal.Inputs[OLE DB Destination Input].ExternalColumns[home_goal_scorers]"
+                      lineageId="Package\dim_goal\Sort.Outputs[Sort Output].Columns[home_goal_scorers]" />
+                    <inputColumn
+                      refId="Package\dim_goal\dim_goal.Inputs[OLE DB Destination Input].Columns[away_goal_minutes]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="away_goal_minutes"
+                      cachedSortKeyPosition="3"
+                      externalMetadataColumnId="Package\dim_goal\dim_goal.Inputs[OLE DB Destination Input].ExternalColumns[away_goal_minutes]"
+                      lineageId="Package\dim_goal\Sort.Outputs[Sort Output].Columns[away_goal_minutes]" />
+                    <inputColumn
+                      refId="Package\dim_goal\dim_goal.Inputs[OLE DB Destination Input].Columns[away_goal_scorers]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="away_goal_scorers"
+                      cachedSortKeyPosition="4"
+                      externalMetadataColumnId="Package\dim_goal\dim_goal.Inputs[OLE DB Destination Input].ExternalColumns[away_goal_scorers]"
+                      lineageId="Package\dim_goal\Sort.Outputs[Sort Output].Columns[away_goal_scorers]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\dim_goal.Inputs[OLE DB Destination Input].ExternalColumns[idgoal]"
+                      dataType="i4"
+                      name="idgoal" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\dim_goal.Inputs[OLE DB Destination Input].ExternalColumns[home_goal_minutes]"
+                      dataType="wstr"
+                      length="255"
+                      name="home_goal_minutes" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\dim_goal.Inputs[OLE DB Destination Input].ExternalColumns[home_goal_scorers]"
+                      dataType="wstr"
+                      length="255"
+                      name="home_goal_scorers" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\dim_goal.Inputs[OLE DB Destination Input].ExternalColumns[away_goal_minutes]"
+                      dataType="wstr"
+                      length="255"
+                      name="away_goal_minutes" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\dim_goal.Inputs[OLE DB Destination Input].ExternalColumns[away_goal_scorers]"
+                      dataType="wstr"
+                      length="255"
+                      name="away_goal_scorers" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dim_goal\dim_goal.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\dim_goal\dim_goal.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim_goal\dim_goal.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dim_goal\dim_goal.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dim_goal\dim_goal.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dim_goal\dim_goal.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dim_goal\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">match$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dim_goal\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].Columns[home_goal_minutes]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_goal_minutes]"
+                      length="255"
+                      lineageId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].Columns[home_goal_minutes]"
+                      name="home_goal_minutes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].Columns[home_goal_scorers]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_goal_scorers]"
+                      length="255"
+                      lineageId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].Columns[home_goal_scorers]"
+                      name="home_goal_scorers"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].Columns[away_goal_minutes]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_goal_minutes]"
+                      length="255"
+                      lineageId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].Columns[away_goal_minutes]"
+                      name="away_goal_minutes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].Columns[away_goal_scorers]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_goal_scorers]"
+                      length="255"
+                      lineageId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].Columns[away_goal_scorers]"
+                      name="away_goal_scorers"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[id]"
+                      dataType="r8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[home]"
+                      dataType="wstr"
+                      length="255"
+                      name="home" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[away]"
+                      dataType="wstr"
+                      length="255"
+                      name="away" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[day]"
+                      dataType="r8"
+                      name="day" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[month]"
+                      dataType="r8"
+                      name="month" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[year]"
+                      dataType="r8"
+                      name="year" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[time (utc)]"
+                      dataType="date"
+                      name="time (utc)" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[attendance]"
+                      dataType="r8"
+                      name="attendance" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[venue]"
+                      dataType="wstr"
+                      length="255"
+                      name="venue" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[league]"
+                      dataType="wstr"
+                      length="255"
+                      name="league" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_score]"
+                      dataType="r8"
+                      name="home_score" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_score]"
+                      dataType="r8"
+                      name="away_score" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_possessionPct]"
+                      dataType="r8"
+                      name="home_possessionPct" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_possessionPct]"
+                      dataType="r8"
+                      name="away_possessionPct" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_shotsSummary]"
+                      dataType="r8"
+                      name="home_shotsSummary" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_shotsSummary]"
+                      dataType="r8"
+                      name="away_shotsSummary" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_foulsCommitted]"
+                      dataType="r8"
+                      name="home_foulsCommitted" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_foulsCommitted]"
+                      dataType="r8"
+                      name="away_foulsCommitted" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_yellowCards]"
+                      dataType="r8"
+                      name="home_yellowCards" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_yellowCards]"
+                      dataType="r8"
+                      name="away_yellowCards" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_redCards]"
+                      dataType="r8"
+                      name="home_redCards" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_redCards]"
+                      dataType="r8"
+                      name="away_redCards" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_offsides]"
+                      dataType="r8"
+                      name="home_offsides" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_offsides]"
+                      dataType="r8"
+                      name="away_offsides" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_wonCorners]"
+                      dataType="r8"
+                      name="home_wonCorners" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_wonCorners]"
+                      dataType="r8"
+                      name="away_wonCorners" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_saves]"
+                      dataType="r8"
+                      name="home_saves" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_saves]"
+                      dataType="r8"
+                      name="away_saves" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_goal_minutes]"
+                      dataType="wstr"
+                      length="255"
+                      name="home_goal_minutes" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_goal_scorers]"
+                      dataType="wstr"
+                      length="255"
+                      name="home_goal_scorers" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_goal_minutes]"
+                      dataType="wstr"
+                      length="255"
+                      name="away_goal_minutes" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_goal_scorers]"
+                      dataType="wstr"
+                      length="255"
+                      name="away_goal_scorers" />
+                    <externalMetadataColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].ExternalColumns[League1]"
+                      dataType="wstr"
+                      length="255"
+                      name="League1" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dim_goal\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dim_goal\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dim_goal\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Error Output].Columns[home_goal_minutes]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\dim_goal\Excel Source.Outputs[Excel Source Error Output].Columns[home_goal_minutes]"
+                      name="home_goal_minutes" />
+                    <outputColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Error Output].Columns[home_goal_scorers]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\dim_goal\Excel Source.Outputs[Excel Source Error Output].Columns[home_goal_scorers]"
+                      name="home_goal_scorers" />
+                    <outputColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Error Output].Columns[away_goal_minutes]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\dim_goal\Excel Source.Outputs[Excel Source Error Output].Columns[away_goal_minutes]"
+                      name="away_goal_minutes" />
+                    <outputColumn
+                      refId="Package\dim_goal\Excel Source.Outputs[Excel Source Error Output].Columns[away_goal_scorers]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\dim_goal\Excel Source.Outputs[Excel Source Error Output].Columns[away_goal_scorers]"
+                      name="away_goal_scorers" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dim_goal\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\dim_goal\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dim_goal\Sort.Inputs[Sort Input].Columns[home_goal_minutes]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="home_goal_minutes"
+                      lineageId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].Columns[home_goal_minutes]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dim_goal\Sort.Inputs[Sort Input].Columns[home_goal_scorers]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="home_goal_scorers"
+                      lineageId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].Columns[home_goal_scorers]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dim_goal\Sort.Inputs[Sort Input].Columns[away_goal_minutes]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="away_goal_minutes"
+                      lineageId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].Columns[away_goal_minutes]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dim_goal\Sort.Inputs[Sort Input].Columns[away_goal_scorers]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="away_goal_scorers"
+                      lineageId="Package\dim_goal\Excel Source.Outputs[Excel Source Output].Columns[away_goal_scorers]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">4</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dim_goal\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim_goal\Sort.Outputs[Sort Output].Columns[home_goal_minutes]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\dim_goal\Sort.Outputs[Sort Output].Columns[home_goal_minutes]"
+                      name="home_goal_minutes"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\dim_goal\Excel Source.Outputs[Excel Source Output].Columns[home_goal_minutes]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dim_goal\Sort.Outputs[Sort Output].Columns[home_goal_scorers]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\dim_goal\Sort.Outputs[Sort Output].Columns[home_goal_scorers]"
+                      name="home_goal_scorers"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\dim_goal\Excel Source.Outputs[Excel Source Output].Columns[home_goal_scorers]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dim_goal\Sort.Outputs[Sort Output].Columns[away_goal_minutes]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\dim_goal\Sort.Outputs[Sort Output].Columns[away_goal_minutes]"
+                      name="away_goal_minutes"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\dim_goal\Excel Source.Outputs[Excel Source Output].Columns[away_goal_minutes]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dim_goal\Sort.Outputs[Sort Output].Columns[away_goal_scorers]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\dim_goal\Sort.Outputs[Sort Output].Columns[away_goal_scorers]"
+                      name="away_goal_scorers"
+                      sortKeyPosition="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\dim_goal\Excel Source.Outputs[Excel Source Output].Columns[away_goal_scorers]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dim_goal.Paths[Excel Source Output]"
+              endId="Package\dim_goal\Sort.Inputs[Sort Input]"
+              name="Excel Source Output"
+              startId="Package\dim_goal\Excel Source.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\dim_goal.Paths[Sort Output]"
+              endId="Package\dim_goal\dim_goal.Inputs[OLE DB Destination Input]"
+              name="Sort Output"
+              startId="Package\dim_goal\Sort.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\dim_team"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{1D6757B6-6131-41FC-95F3-78770D12B8CD}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dim_team"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\dim_team\dim_team"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="dim_team"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dim_team]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dim_team\dim_team.Connections[OleDbConnection]"
+                  connectionManagerID="{7598FF2B-15AD-4884-AC4B-F2D8E6407CB3}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SHU_SHU.DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dim_team\dim_team.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dim_team\dim_team.Inputs[OLE DB Destination Input].Columns[home]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="home"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\dim_team\dim_team.Inputs[OLE DB Destination Input].ExternalColumns[home]"
+                      lineageId="Package\dim_team\Sort.Outputs[Sort Output].Columns[home]" />
+                    <inputColumn
+                      refId="Package\dim_team\dim_team.Inputs[OLE DB Destination Input].Columns[away]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="away"
+                      cachedSortKeyPosition="2"
+                      externalMetadataColumnId="Package\dim_team\dim_team.Inputs[OLE DB Destination Input].ExternalColumns[away]"
+                      lineageId="Package\dim_team\Sort.Outputs[Sort Output].Columns[away]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dim_team\dim_team.Inputs[OLE DB Destination Input].ExternalColumns[idteam]"
+                      dataType="i4"
+                      name="idteam" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\dim_team.Inputs[OLE DB Destination Input].ExternalColumns[home]"
+                      dataType="wstr"
+                      length="255"
+                      name="home" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\dim_team.Inputs[OLE DB Destination Input].ExternalColumns[away]"
+                      dataType="wstr"
+                      length="255"
+                      name="away" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dim_team\dim_team.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\dim_team\dim_team.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim_team\dim_team.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dim_team\dim_team.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dim_team\dim_team.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dim_team\dim_team.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dim_team\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">match$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dim_team\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dim_team\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].Columns[home]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[home]"
+                      length="255"
+                      lineageId="Package\dim_team\Excel Source.Outputs[Excel Source Output].Columns[home]"
+                      name="home"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].Columns[away]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[away]"
+                      length="255"
+                      lineageId="Package\dim_team\Excel Source.Outputs[Excel Source Output].Columns[away]"
+                      name="away"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[id]"
+                      dataType="r8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[home]"
+                      dataType="wstr"
+                      length="255"
+                      name="home" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[away]"
+                      dataType="wstr"
+                      length="255"
+                      name="away" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[day]"
+                      dataType="r8"
+                      name="day" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[month]"
+                      dataType="r8"
+                      name="month" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[year]"
+                      dataType="r8"
+                      name="year" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[time (utc)]"
+                      dataType="date"
+                      name="time (utc)" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[attendance]"
+                      dataType="r8"
+                      name="attendance" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[venue]"
+                      dataType="wstr"
+                      length="255"
+                      name="venue" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[league]"
+                      dataType="wstr"
+                      length="255"
+                      name="league" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_score]"
+                      dataType="r8"
+                      name="home_score" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_score]"
+                      dataType="r8"
+                      name="away_score" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_possessionPct]"
+                      dataType="r8"
+                      name="home_possessionPct" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_possessionPct]"
+                      dataType="r8"
+                      name="away_possessionPct" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_shotsSummary]"
+                      dataType="r8"
+                      name="home_shotsSummary" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_shotsSummary]"
+                      dataType="r8"
+                      name="away_shotsSummary" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_foulsCommitted]"
+                      dataType="r8"
+                      name="home_foulsCommitted" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_foulsCommitted]"
+                      dataType="r8"
+                      name="away_foulsCommitted" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_yellowCards]"
+                      dataType="r8"
+                      name="home_yellowCards" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_yellowCards]"
+                      dataType="r8"
+                      name="away_yellowCards" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_redCards]"
+                      dataType="r8"
+                      name="home_redCards" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_redCards]"
+                      dataType="r8"
+                      name="away_redCards" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_offsides]"
+                      dataType="r8"
+                      name="home_offsides" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_offsides]"
+                      dataType="r8"
+                      name="away_offsides" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_wonCorners]"
+                      dataType="r8"
+                      name="home_wonCorners" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_wonCorners]"
+                      dataType="r8"
+                      name="away_wonCorners" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_saves]"
+                      dataType="r8"
+                      name="home_saves" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_saves]"
+                      dataType="r8"
+                      name="away_saves" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_goal_minutes]"
+                      dataType="wstr"
+                      length="255"
+                      name="home_goal_minutes" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[home_goal_scorers]"
+                      dataType="wstr"
+                      length="255"
+                      name="home_goal_scorers" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_goal_minutes]"
+                      dataType="wstr"
+                      length="255"
+                      name="away_goal_minutes" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[away_goal_scorers]"
+                      dataType="wstr"
+                      length="255"
+                      name="away_goal_scorers" />
+                    <externalMetadataColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Output].ExternalColumns[League1]"
+                      dataType="wstr"
+                      length="255"
+                      name="League1" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dim_team\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dim_team\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dim_team\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Error Output].Columns[home]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\dim_team\Excel Source.Outputs[Excel Source Error Output].Columns[home]"
+                      name="home" />
+                    <outputColumn
+                      refId="Package\dim_team\Excel Source.Outputs[Excel Source Error Output].Columns[away]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\dim_team\Excel Source.Outputs[Excel Source Error Output].Columns[away]"
+                      name="away" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dim_team\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\dim_team\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dim_team\Sort.Inputs[Sort Input].Columns[home]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="home"
+                      lineageId="Package\dim_team\Excel Source.Outputs[Excel Source Output].Columns[home]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\dim_team\Sort.Inputs[Sort Input].Columns[away]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="away"
+                      lineageId="Package\dim_team\Excel Source.Outputs[Excel Source Output].Columns[away]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dim_team\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim_team\Sort.Outputs[Sort Output].Columns[home]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\dim_team\Sort.Outputs[Sort Output].Columns[home]"
+                      name="home"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\dim_team\Excel Source.Outputs[Excel Source Output].Columns[home]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dim_team\Sort.Outputs[Sort Output].Columns[away]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\dim_team\Sort.Outputs[Sort Output].Columns[away]"
+                      name="away"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\dim_team\Excel Source.Outputs[Excel Source Output].Columns[away]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dim_team.Paths[Excel Source Output]"
+              endId="Package\dim_team\Sort.Inputs[Sort Input]"
+              name="Excel Source Output"
+              startId="Package\dim_team\Excel Source.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\dim_team.Paths[Sort Output]"
+              endId="Package\dim_team\dim_team.Inputs[OLE DB Destination Input]"
+              name="Sort Output"
+              startId="Package\dim_team\Sort.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{6FD7C261-CDAC-4104-9EE5-C5496445DEFD}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7598FF2B-15AD-4884-AC4B-F2D8E6407CB3}"
+          SQLTask:SqlStatementSource="delete from dim_team;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{FFBD1E3C-E182-4E3D-BFB0-626B81869147}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7598FF2B-15AD-4884-AC4B-F2D8E6407CB3}"
+          SQLTask:SqlStatementSource="delete from dim_goal;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task 2"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{EBBB6248-B05A-4E0B-BBCA-759D282A5A19}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task 2"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7598FF2B-15AD-4884-AC4B-F2D8E6407CB3}"
+          SQLTask:SqlStatementSource="delete from dim_date;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{EAD75FE7-C1CC-4435-B693-538396D2E27B}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\dim_team" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{E9AE028B-27A5-4BB2-94F3-0EBD8AAFBBAB}"
+      DTS:From="Package\Execute SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\dim_goal" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{EE842A6B-010E-45E2-9FBE-5C50A0EFFF05}"
+      DTS:From="Package\Execute SQL Task 2"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\dim_date" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="125.6,41.6"
+          Id="Package\dim_team"
+          TopLeft="323.571429260227,40.5294117291803" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Execute SQL Task"
+          TopLeft="49.2857143906306,40.5294117291803" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="211.685714390631,61.3294117291803">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="111.885714869597,0"
+              Start="0,0"
+              End="104.385714869597,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="104.385714869597,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="121.6,41.6"
+          Id="Package\dim_goal"
+          TopLeft="325.00000069184,135.352941057828" />
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\Execute SQL Task 1"
+          TopLeft="55.7142858328868,136.882352821194" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="227.714285832887,156.917646939511">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="97.2857148589528,0"
+              Start="0,0"
+              End="89.7857148589528,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="89.7857148589528,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="122.4,41.6"
+          Id="Package\dim_date"
+          TopLeft="333.571429281514,236.294117439938" />
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\Execute SQL Task 2"
+          TopLeft="62.142857275143,231.705882149842" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="234.142857275143,254.79999979489">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="99.4285720063715,0"
+              Start="0,0"
+              End="91.9285720063715,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="91.9285720063715,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\dim_team">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\dim_team\Excel Source"
+          TopLeft="72.1428572964304,93.2941175652829" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\dim_team\Sort"
+          TopLeft="317.857143533777,93.2941175652829" />
+        <NodeLayout
+          Size="125.6,41.6"
+          Id="Package\dim_team\dim_team"
+          TopLeft="531.428572559843,96.3529410920135" />
+        <EdgeLayout
+          Id="Package\dim_team.Paths[Excel Source Output]"
+          TopLeft="210.54285729643,114.094117565283">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="107.314286237347,0"
+              Start="0,0"
+              End="99.8142862373469,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="99.8142862373469,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dim_team.Paths[Sort Output]"
+          TopLeft="415.457143533777,115.623529328648">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="115.971429026066,0"
+              Start="0,0"
+              End="108.471429026066,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="108.471429026066,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dim_team\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dim_team\dim_team">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\dim_goal">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\dim_goal\Excel Source"
+          TopLeft="107.999998390675,118.999998226762" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\dim_goal\Sort"
+          TopLeft="408.999993905425,122.999998167157" />
+        <NodeLayout
+          Size="121.6,41.6"
+          Id="Package\dim_goal\dim_goal"
+          TopLeft="634.999990537763,124.999998137355" />
+        <EdgeLayout
+          Id="Package\dim_goal.Paths[Excel Source Output]"
+          TopLeft="246.399998390675,141.79999819696">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="162.599995514751,0"
+              Start="0,0"
+              End="155.099995514751,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="155.099995514751,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dim_goal.Paths[Sort Output]"
+          TopLeft="506.599993905425,144.799998152256">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="128.399996632338,0"
+              Start="0,0"
+              End="120.899996632338,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="120.899996632338,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dim_goal\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dim_goal\dim_goal">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\dim_date">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\dim_date\Excel Source"
+          TopLeft="88.9999986737966,133.999998003244" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\dim_date\Sort"
+          TopLeft="346.499994918704,130.499998137355" />
+        <NodeLayout
+          Size="122.4,41.6"
+          Id="Package\dim_date\dim_date"
+          TopLeft="605.999990969896,137.99999794364" />
+        <EdgeLayout
+          Id="Package\dim_date.Paths[Excel Source Output]"
+          TopLeft="227.399998673797,153.0499980703">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="119.099996244907,0"
+              Start="0,0"
+              End="111.599996244907,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="111.599996244907,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dim_date.Paths[Sort Output]"
+          TopLeft="444.099994918704,155.049998040497">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="161.899996051192,0"
+              Start="0,0"
+              End="154.399996051192,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="154.399996051192,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dim_date\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dim_date\dim_date">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
